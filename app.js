@@ -3,11 +3,19 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const { ApolloServer } = require('apollo-server-express');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const typeDefs = require('./models');
+const resolvers = require('./resolvers');
 
 var app = express();
+
+// Apollo setup
+const server = new ApolloServer({ typeDefs, resolvers });
+server.applyMiddleware({ app });
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
