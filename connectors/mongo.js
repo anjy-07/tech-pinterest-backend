@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
-const url = `mongodb://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@ds125341.mlab.com:25341/PRASHEELS_DB_GOES_HERE`;
+const mongoURI = ``;
 
 module.exports = {
-
     connectToServer: async () => {
         try {
-            return Promise.resolve(mongoose.connect(url, { useNewUrlParser: true,  useUnifiedTopology: true }));
+            console.log("connecting to mongodb");
+            return Promise.resolve(mongoose.connect(mongoURI, { useNewUrlParser: true,  useUnifiedTopology: true }));
         } catch (err) {
             return Promise.reject(err);
         }

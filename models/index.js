@@ -1,11 +1,11 @@
 const { gql } = require('apollo-server-express');
 
-module.exports = gql`
+module.exports = gql `
     type User {
-        id: String
-        name: String
-        email: String
-        password: String
+        id: String!
+        name: String!
+        email: String!
+        password: String!
         bio: String
         mobile: String
         username: String
@@ -17,26 +17,46 @@ module.exports = gql`
         boards : [Board]
     },
     type Board {
-        id: String
-        name: String
-        category: String
-        tags: String
-        pins: [Pin]
-        created_at: String
-        updated_at: String
+        id: String!
+        name: String!
+        category: String!
+        tags: String!
+        pins: [String]
+        created_at: String!
+        updated_at: String!
     },
     type Pin {
         id: String
-        name: String
+        name: String!
         description: String
-        url: String
+        url: String!
         image: String
         category: String
         tags: String
-        created_at: String
-        updated_at: String
+        created_at: String!
+        updated_at: String!
     },
+    type File {
+    filename: String!
+    mimetype: String!
+    encoding: String!
+  },
     type Query {
-    boards: [Board]
-  }
+     boards: [Board],
+     boardsByUser: [Board],
+     boardByCategory: [Board],
+     boardByTags: [Board],
+     pins: [Pin],
+     pinsByBoard: [Pin],
+     pinByCategory: [Pin],
+     pinByTags: [Pin],
+     uploads: [File]
+    }
+    type Mutation {
+        createBoard(name: String!, category: String, tags: String): Board
+        updateBoard(name: String!, category: String, tags: String): Board
+        addPinToBoard(boardId: String!, name: String!, description: String, url: String!, category: String, tags: String): Pin
+        singleUpload(file: Upload!): File!
+    }
+ 
 `;
