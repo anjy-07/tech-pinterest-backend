@@ -81,8 +81,7 @@ var getUser = function(args) {
 }
 var root = {
     user: getUser,
-    courses: getCourses,
-
+    /*courses: getCourses,*/
 };
 // Create an express server and a GraphQL endpoint
 var app = express();
@@ -91,4 +90,4 @@ app.use('/graphql', graphqlHTTP({
     rootValue: root,
     graphiql: true,
   }))
-app.listen(4500, () => console.log('Express GraphQL Server Now Running On localhost:4000/graphql'));
+app.listen(4000, () => console.log('Express GraphQL Server Now Running On localhost:4000/graphql'));

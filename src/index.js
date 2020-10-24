@@ -10,24 +10,6 @@ const NODE_ENV = process.env.NODE_ENV || 'development';
 app.set('port', PORT);
 app.set('env', NODE_ENV);
 
-
-
-
-app.route('/Node').get(function (req, res) {
-    try {
-        const data = fs.readFileSync(path.join(__dirname, './stats.json'));
-        const stats = JSON.parse(data);
-        
-        console.log(stats);
-
-    } catch (e) {
-        next(e);
-    }
-
-});
-
-//app.use('/', require(path.join(__dirname, 'routes')));
-
 app.use((req, res, next) => {
     const err = new Error(`${req.method} ${req.url} Not Found`);
     err.status = 404;
