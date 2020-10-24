@@ -10,7 +10,6 @@ var http = require('http');
 var connector = require('../connectors/mongo');
 
 connector.connectToServer();
-console.log("print");
 
 /**
  * Get port from environment and store in Express.
