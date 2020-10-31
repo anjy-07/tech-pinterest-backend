@@ -12,7 +12,9 @@
         "type": "xyz",
         "date_created": "2020-06-01",
         "date_updated": "2020-06-03",
-        "boards" : []
+        "boards" : [
+            {},{}
+        ]
     },
     {
         "id": "2",
@@ -27,7 +29,9 @@
         "type": "xyz",
         "date_created": "2020-06-01",
         "date_updated": "2020-06-03",
-        "boards" : []
+        "boards" : [
+            {},{}
+        ]
     }
 ]
 
